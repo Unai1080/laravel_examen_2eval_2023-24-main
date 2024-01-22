@@ -43,6 +43,9 @@ Route::get('/enpresaBilatu/{id}',[IkasleController::class,'enpresaBilatu']);
 
 Route::post('/enpresaEsleitu',[IkasleController::class,'enpresaEsleitu']);
 
+Route::get('/adminPanel',[IkasleController::class,'adminPanel']);
+
+
 
 require __DIR__.'/auth.php';
 

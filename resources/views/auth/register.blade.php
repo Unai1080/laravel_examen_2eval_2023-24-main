@@ -38,6 +38,30 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
+        <div>
+            Telefono zenbakia <input type="text" name="tlf">
+            @error('tlf')
+            <label>{{$message}}</label>
+            @enderror
+        </div>
+        <div>
+            Jaiotze data <input type="date" name="jaiotze_data">
+            @error('jaiotze_data')
+            <label>{{$message}}</label>
+            @enderror
+        </div>
+        
+        <div>
+            Generoa 
+            <select name="generoa">
+                <option value="Gizona">Gizona</option>
+                <option value="Emakumea">Emakumea</option>
+                <option value="Beste bat">Beste bat</option>
+            </select>
+            @error('generoa')
+            <label>{{$generoa}}</label>
+            @enderror
+        </div>
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">

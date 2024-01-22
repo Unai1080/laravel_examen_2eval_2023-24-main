@@ -193,4 +193,22 @@ class IkasleController extends Controller
 
     }
 
+
+
+
+
+    public function adminPanel(){
+        $ikasleak=Alumno::all();
+        $fctak=Fct::all();
+        $enpresakin=[];
+
+        foreach($fctak as $fct){
+            foreach($ikasleak as $ikasle){
+                $enpresakin[]=$ikasle;
+            }
+        }
+
+        return view('adminPanel',['ikasleak'=>$enpresakin]);
+    }
+
 }
