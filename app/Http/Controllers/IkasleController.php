@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
 use App\Models\Ciclo;
+use App\Models\Empresa;
+use App\Models\Fct;
+
+
 
 
 class IkasleController extends Controller
@@ -113,6 +117,79 @@ class IkasleController extends Controller
             $ikaslea->save();
             return redirect('/matrikulatu');
         }
+
+    }
+
+    public function enpresaBista(){
+        $ikasleak=Alumno::all();
+        $fctak=Fct::all();
+        $enpresaGabe=[];
+
+        //hauek enpresa duten ikasleak dira enpresa ez dutenak lortu nehar ditut
+        foreach($fctak as $fct){
+            foreach($ikasleak as $ikasle){
+                $ikasle->id==$fct->id_alumno;
+            }
+        }
+
+        return view('enpresaFct',['ikasleak'=>$ikasleak]);
+    }
+
+    public function enpresaBilatu($id){
+        $ikaslea=Alumno::find($id);
+        $enpresak=Empresa::all();
+
+        //hemen goikoan bezala egin beharko zen bakarrik ikasle ez duten enpresak agertzeko
+        return view('enpresaEsleitu',['enpresak'=>$enpresak,'ikaslea'=>$ikaslea]);
+
+    }
+
+    public function enpresaEsleitu(Request $request){  
+        $ikaslea=Alumno::find($request->input('ikaslea'));
+        $enpresa=Empresa::find($request->input('enpresa'));
+
+        $ikasleak=Alumno::all();
+        $enpresak=Empresa::all();
+        $fctak=Fct::all();
+        $kont=0;
+        $kont2=0;
+
+        //enpresa bat esleituta dauka ikasleak
+        foreach($fctak as $fct){
+            foreach($ikasleak as $ikasle){
+                if($ikasle->id==$fct->id_alumno){
+                    $kont++;
+                }
+                
+            }
+        }
+        
+
+        foreach($fctak as $fct){
+            foreach($enpresak as $i){
+                if($i->id==$fct->id_enpresa){
+                    $kont2++;
+                }
+                
+            }
+        }
+        if($kont!==0){
+            echo 'ikasle honek enpresa bat dauka esleituta';
+        }
+        else if($kont!==0){
+            echo 'enpresa honek ikasle bat dauka esleituta';
+        }
+        else{
+            $fct=Fct::create([
+                'id_alumno'=>$ikaslea->id,
+                'id_enpresa'=>$enpresa->id,
+                'fechaInicio'=>now(),
+                'fechaFin'=>now(),
+            ]);
+            return redirect('/enpresa');
+        }
+
+
 
     }
 

@@ -37,8 +37,11 @@ Route::get('/ikasleAukeratu/{id}',[IkasleController::class, 'cicloAukeratu'] );
 
 Route::post('/cicloanGehitu',[IkasleController::class, 'cicloanGehitu'] );
 
+Route::get('/enpresa',[IkasleController::class,'enpresaBista']);
 
+Route::get('/enpresaBilatu/{id}',[IkasleController::class,'enpresaBilatu']);
 
+Route::post('/enpresaEsleitu',[IkasleController::class,'enpresaEsleitu']);
 
 
 require __DIR__.'/auth.php';
