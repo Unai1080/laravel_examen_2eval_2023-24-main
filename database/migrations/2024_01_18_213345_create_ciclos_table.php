@@ -26,4 +26,7 @@ return new class extends Migration
     {
         Schema::dropIfExists('ciclos');
     }
+    public function ikasleak(){
+        return $this->hasMany('App\Models\Ikaslea');
+    }
 };

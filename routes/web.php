@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\IkasleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,9 +29,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/olee', function () {
-    return view('enunciado');
-});
+Route::get('/ikasleak',[IkasleController::class, 'ikasleTxiki'] );
+
+Route::get('/matrikulatu',[IkasleController::class, 'matrikulatu'] );
+
+Route::get('/ikasleAukeratu',[IkasleController::class, 'cicloAukeratu'] );
+
+
+
 
 require __DIR__.'/auth.php';
 

@@ -21,6 +21,12 @@ return new class extends Migration
             $table->integer("telefono");
             $table->string("email");
             $table->boolean("vehiculo");
+            $table->integer("ciclo_id");
+            // $table->foreignId('ciclo_id')
+            //     ->constrained()
+            //     ->onUpdate('cascade')
+            //     ->onDelete('cascade');
+            //$table->foreignId('ciclo_id')->references('id')->on('ciclos');
             $table->timestamps();
         });
     }
@@ -31,5 +37,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('alumnos');
+    }
+    
+    public function ciclo(){
+        return $this->belongsTo('App\Models\Ciclo');
     }
 };

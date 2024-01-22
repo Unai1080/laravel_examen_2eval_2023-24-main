@@ -27,6 +27,7 @@ class AlumnoFactory extends Factory
             'telefono' => random_int(610000000, 699999999),
             'email' => $this->faker->email(),
             'vehiculo' => $this->faker->boolean(),
+            'ciclo_id'=>random_int(000, 003),
 
             /*
             $table->string("nif");

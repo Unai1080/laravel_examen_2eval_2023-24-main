@@ -62,8 +62,8 @@
           </div>
 
           <div class="links">
-              <a href="#">Menores de edad</a>
-              <a href="#">Matricular alumno en ciclo</a>
+              <a href="/ikasleak">Menores de edad</a>
+              <a href="/matrikulatu">Matricular alumno en ciclo</a>
               <a href="#">Asignar empresa a alumno</a>
               <a href="#">Listado practicas alumnos/as</a>
               <a href="#">Administración</a>
