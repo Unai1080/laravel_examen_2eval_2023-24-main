@@ -33,7 +33,10 @@ Route::get('/ikasleak',[IkasleController::class, 'ikasleTxiki'] );
 
 Route::get('/matrikulatu',[IkasleController::class, 'matrikulatu'] );
 
-Route::get('/ikasleAukeratu',[IkasleController::class, 'cicloAukeratu'] );
+Route::get('/ikasleAukeratu/{id}',[IkasleController::class, 'cicloAukeratu'] );
+
+Route::post('/cicloanGehitu',[IkasleController::class, 'cicloanGehitu'] );
+
 
 
 

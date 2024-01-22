@@ -12,7 +12,7 @@
     <ul>
     @foreach($ikasleak as $ikasle)
         <li>
-        <form action="/ikasleAukeratu" method="get">
+        <form action="/ikasleAukeratu/{{$ikasle->id}}" method="get">
             @csrf
             <label>{{$ikasle->nombre}}, {{$ikasle->apellido}}</label>
             <input type="submit" value="aukeratu">

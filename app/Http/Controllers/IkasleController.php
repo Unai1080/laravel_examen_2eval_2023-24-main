@@ -85,7 +85,35 @@ class IkasleController extends Controller
             }
         }
         $cursos=Ciclo::all();
-        return view('matrikulaListak',['ikasleak'=>$cicloGabe, 'cursos'=>$cursos]);
+        return view('matrikulaListak',['ikasleak'=>$cicloGabe]);
+    }
+
+    public function cicloAukeratu($id){
+        $ikaslea=Alumno::find($id);
+        $cursos=Ciclo::all();
+        return view('cicloakLista',['ikaslea'=>$ikaslea, 'cursos'=>$cursos]);
+    }
+
+    public function cicloanGehitu(Request $request){
+        $ikaslea=Alumno::find($request->input('ikaslea'));
+        $curso=Ciclo::find($request->input('ciclo'));
+
+        $ikasleak=Alumno::all();
+        $kont=0;
+         foreach($ikasleak as $ikasle){
+            if($ikasle->ciclo_id==$curso->id){
+                $kont++;
+            }
+        }
+        if($kont>=25){
+            echo "Ezin da ciclo honetan sartu, jende gehiegi dago";
+        }
+        else{
+            $ikaslea->ciclo_id=$curso->id;
+            $ikaslea->save();
+            return redirect('/matrikulatu');
+        }
+
     }
 
 }
